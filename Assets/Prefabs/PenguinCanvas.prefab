@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 224732671631680910}
   - component: {fileID: 222843915087193560}
   - component: {fileID: 114197641820536722}
-  - component: {fileID: 114706515264690940}
   m_Layer: 5
   m_Name: Bone2Full
   m_TagString: Untagged
@@ -74,21 +73,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &114706515264690940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1030456013805360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39104840cb9844b97926d7ca7a4dfd4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemType: 1
-  existType: 0
-  index: 2
 --- !u!1 &1086393758878308
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,7 +84,6 @@ GameObject:
   - component: {fileID: 224938778031825854}
   - component: {fileID: 222296891588810614}
   - component: {fileID: 114011782629440422}
-  - component: {fileID: 114716246889123830}
   m_Layer: 5
   m_Name: Fish3Missing
   m_TagString: Untagged
@@ -163,21 +146,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &114716246889123830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1086393758878308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39104840cb9844b97926d7ca7a4dfd4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemType: 0
-  existType: 1
-  index: 2
 --- !u!1 &1206976968228996
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,7 +157,6 @@ GameObject:
   - component: {fileID: 224189179798974742}
   - component: {fileID: 222959968277228020}
   - component: {fileID: 114431018865207162}
-  - component: {fileID: 114267147566274738}
   m_Layer: 5
   m_Name: Fish2Full
   m_TagString: Untagged
@@ -252,21 +219,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &114267147566274738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1206976968228996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39104840cb9844b97926d7ca7a4dfd4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemType: 0
-  existType: 0
-  index: 1
 --- !u!1 &1314705683813734
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +230,6 @@ GameObject:
   - component: {fileID: 224112182900939492}
   - component: {fileID: 222273910634511744}
   - component: {fileID: 114261743733190390}
-  - component: {fileID: 114119035696287262}
   m_Layer: 5
   m_Name: Fish1Full
   m_TagString: Untagged
@@ -341,21 +292,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &114119035696287262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1314705683813734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39104840cb9844b97926d7ca7a4dfd4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemType: 0
-  existType: 0
-  index: 0
 --- !u!1 &1518304400623434
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,7 +332,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -135.20001, y: -84.23001}
+  m_AnchoredPosition: {x: -135.2002, y: -84.22998}
   m_SizeDelta: {x: 269.30005, y: 159.95001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &222659298567689230
@@ -446,7 +382,6 @@ GameObject:
   - component: {fileID: 224083789364324498}
   - component: {fileID: 222258270285905456}
   - component: {fileID: 114818355386931174}
-  - component: {fileID: 114130471830415032}
   m_Layer: 5
   m_Name: Bone1Full
   m_TagString: Untagged
@@ -509,21 +444,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &114130471830415032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1636171956057074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39104840cb9844b97926d7ca7a4dfd4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemType: 1
-  existType: 0
-  index: 1
 --- !u!1 &1642383272142152
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,21 +561,21 @@ MonoBehaviour:
   gameOverPanel: {fileID: 2238396888420858423}
   replayButton: {fileID: 3637819796484822842}
   fishesFull:
-  - {fileID: 114119035696287262}
-  - {fileID: 114267147566274738}
-  - {fileID: 114717047303714156}
+  - {fileID: 1314705683813734}
+  - {fileID: 1206976968228996}
+  - {fileID: 1748851417477894}
   bonesFull:
-  - {fileID: 114130471830415032}
-  - {fileID: 114706515264690940}
-  - {fileID: 114004271011767902}
+  - {fileID: 1636171956057074}
+  - {fileID: 1030456013805360}
+  - {fileID: 1901288779468866}
   fishesMissing:
-  - {fileID: 114240587486171812}
-  - {fileID: 114858741359261972}
-  - {fileID: 114716246889123830}
+  - {fileID: 1757138279435680}
+  - {fileID: 1679808652585508}
+  - {fileID: 1086393758878308}
   bonesMissing:
-  - {fileID: 114124715093039360}
-  - {fileID: 114391450083670116}
-  - {fileID: 114689626828377806}
+  - {fileID: 1679820306770752}
+  - {fileID: 1662636419491036}
+  - {fileID: 1659984206319124}
 --- !u!1 &1659984206319124
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,7 +587,6 @@ GameObject:
   - component: {fileID: 224596147990936940}
   - component: {fileID: 222957534375481400}
   - component: {fileID: 114472960809475274}
-  - component: {fileID: 114689626828377806}
   m_Layer: 5
   m_Name: Bone3Missing
   m_TagString: Untagged
@@ -730,21 +649,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &114689626828377806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1659984206319124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39104840cb9844b97926d7ca7a4dfd4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemType: 1
-  existType: 1
-  index: 3
 --- !u!1 &1662636419491036
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,7 +660,6 @@ GameObject:
   - component: {fileID: 224153907649482172}
   - component: {fileID: 222223557201255276}
   - component: {fileID: 114540022615574402}
-  - component: {fileID: 114391450083670116}
   m_Layer: 5
   m_Name: Bone2Missing
   m_TagString: Untagged
@@ -819,21 +722,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &114391450083670116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1662636419491036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39104840cb9844b97926d7ca7a4dfd4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemType: 1
-  existType: 1
-  index: 2
 --- !u!1 &1679808652585508
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,7 +733,6 @@ GameObject:
   - component: {fileID: 224817786712415998}
   - component: {fileID: 222307570832179018}
   - component: {fileID: 114112308113987082}
-  - component: {fileID: 114858741359261972}
   m_Layer: 5
   m_Name: Fish2Missing
   m_TagString: Untagged
@@ -908,21 +795,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &114858741359261972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1679808652585508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39104840cb9844b97926d7ca7a4dfd4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemType: 0
-  existType: 1
-  index: 1
 --- !u!1 &1679820306770752
 GameObject:
   m_ObjectHideFlags: 0
@@ -934,7 +806,6 @@ GameObject:
   - component: {fileID: 224884680709227284}
   - component: {fileID: 222913522291578778}
   - component: {fileID: 114990583054900952}
-  - component: {fileID: 114124715093039360}
   m_Layer: 5
   m_Name: Bone1Missing
   m_TagString: Untagged
@@ -997,21 +868,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &114124715093039360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1679820306770752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39104840cb9844b97926d7ca7a4dfd4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemType: 1
-  existType: 1
-  index: 3
 --- !u!1 &1748851417477894
 GameObject:
   m_ObjectHideFlags: 0
@@ -1023,7 +879,6 @@ GameObject:
   - component: {fileID: 224106354363265066}
   - component: {fileID: 222195442105701270}
   - component: {fileID: 114342814833515562}
-  - component: {fileID: 114717047303714156}
   m_Layer: 5
   m_Name: Fish3Full
   m_TagString: Untagged
@@ -1086,21 +941,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &114717047303714156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1748851417477894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39104840cb9844b97926d7ca7a4dfd4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemType: 0
-  existType: 0
-  index: 2
 --- !u!1 &1757138279435680
 GameObject:
   m_ObjectHideFlags: 0
@@ -1112,7 +952,6 @@ GameObject:
   - component: {fileID: 224503089145481046}
   - component: {fileID: 222228990943419902}
   - component: {fileID: 114370353065457284}
-  - component: {fileID: 114240587486171812}
   m_Layer: 5
   m_Name: Fish1Missing
   m_TagString: Untagged
@@ -1175,21 +1014,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &114240587486171812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1757138279435680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39104840cb9844b97926d7ca7a4dfd4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemType: 0
-  existType: 1
-  index: 0
 --- !u!1 &1901288779468866
 GameObject:
   m_ObjectHideFlags: 0
@@ -1201,7 +1025,6 @@ GameObject:
   - component: {fileID: 224377436799231038}
   - component: {fileID: 222207739341940908}
   - component: {fileID: 114620687453258180}
-  - component: {fileID: 114004271011767902}
   m_Layer: 5
   m_Name: Bone3Full
   m_TagString: Untagged
@@ -1264,21 +1087,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &114004271011767902
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1901288779468866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39104840cb9844b97926d7ca7a4dfd4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemType: 1
-  existType: 0
-  index: 3
 --- !u!1 &1994284939540788
 GameObject:
   m_ObjectHideFlags: 0
@@ -1319,7 +1127,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 152.59998, y: -83.100006}
+  m_AnchoredPosition: {x: 152.59961, y: -83.1001}
   m_SizeDelta: {x: 301.80005, y: 162.20001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &222303324505575636

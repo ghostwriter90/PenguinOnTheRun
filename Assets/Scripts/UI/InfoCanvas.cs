@@ -15,10 +15,10 @@ namespace PenguinOnTheRun.UI
         [SerializeField] private Button replayButton;
 
         [Header("GamePlay")]
-        [SerializeField] private CanvasItem[] fishesFull = new CanvasItem[maxFishCount];
-        [SerializeField] private CanvasItem[] bonesFull = new CanvasItem[maxBoneCount];
-        [SerializeField] private CanvasItem[] fishesMissing = new CanvasItem[maxFishCount];
-        [SerializeField] private CanvasItem[] bonesMissing = new CanvasItem[maxBoneCount];
+        [SerializeField] private GameObject[] fishesFull = new GameObject[maxFishCount];
+        [SerializeField] private GameObject[] bonesFull = new GameObject[maxBoneCount];
+        [SerializeField] private GameObject[] fishesMissing = new GameObject[maxFishCount];
+        [SerializeField] private GameObject[] bonesMissing = new GameObject[maxBoneCount];
 #pragma warning restore 649
 
         public static InfoCanvas Instance { get; private set; }
@@ -41,8 +41,8 @@ namespace PenguinOnTheRun.UI
         {
             if ((health < maxFishCount) && (health >= 0))
             {
-                fishesFull[health].gameObject.SetActive(true);
-                fishesMissing[health].gameObject.SetActive(false);
+                fishesFull[health].SetActive(true);
+                fishesMissing[health].SetActive(false);
             }
         }
 
@@ -50,8 +50,8 @@ namespace PenguinOnTheRun.UI
         {
             if (health > 0)
             {
-                fishesFull[health].gameObject.SetActive(false);
-                fishesMissing[health].gameObject.SetActive(true);
+                fishesFull[health].SetActive(false);
+                fishesMissing[health].SetActive(true);
             }
         }
 
@@ -59,8 +59,8 @@ namespace PenguinOnTheRun.UI
         {
             if (bones < maxBoneCount)
             {
-                bonesFull[bones].gameObject.SetActive(true);
-                bonesMissing[bones].gameObject.SetActive(false);
+                bonesFull[bones].SetActive(true);
+                bonesMissing[bones].SetActive(false);
             }
         }
 
@@ -68,8 +68,8 @@ namespace PenguinOnTheRun.UI
         {
             for (int i = 0; i < maxBoneCount; ++i)
             {
-                bonesFull[i].gameObject.SetActive(false);
-                bonesMissing[i].gameObject.SetActive(true);
+                bonesFull[i].SetActive(false);
+                bonesMissing[i].SetActive(true);
             }
         }
 
@@ -77,8 +77,8 @@ namespace PenguinOnTheRun.UI
         {
             for (int i = 0; i < maxFishCount; ++i)
             {
-                fishesFull[i].gameObject.SetActive(false);
-                fishesMissing[i].gameObject.SetActive(true);
+                fishesFull[i].SetActive(false);
+                fishesMissing[i].SetActive(true);
             }
 
             gameOverPanel.SetActive(true);
