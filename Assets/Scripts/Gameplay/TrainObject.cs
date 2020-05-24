@@ -4,7 +4,9 @@ namespace PenguinOnTheRun.Gameplay
 {
     public abstract class TrainObject : MonoBehaviour
     {
+#pragma warning disable 649
         [SerializeField] protected float length = 3f;
+#pragma warning restore 649
 
         protected int laneIndex = 1;
         protected TrainCar trainCar;

@@ -9,7 +9,7 @@ namespace PenguinOnTheRun.UI
         private const int mainSceneIndex = 0;
         private const int maxFishCount = 3;
         private const int maxBoneCount = 3;
-
+#pragma warning disable 649
         [Header("GameOver")]
         [SerializeField] private GameObject gameOverPanel;
         [SerializeField] private Button replayButton;
@@ -19,7 +19,7 @@ namespace PenguinOnTheRun.UI
         [SerializeField] private CanvasItem[] bonesFull = new CanvasItem[maxBoneCount];
         [SerializeField] private CanvasItem[] fishesMissing = new CanvasItem[maxFishCount];
         [SerializeField] private CanvasItem[] bonesMissing = new CanvasItem[maxBoneCount];
-
+#pragma warning restore 649
 
         public static InfoCanvas Instance { get; private set; }
 

@@ -5,10 +5,12 @@ namespace PenguinOnTheRun.Gameplay
 {
     public class Dog : Obstacle
     {
+#pragma warning disable 649
         [SerializeField] private int maxBoneCount = 3;
         [SerializeField] private float offset = 0;
         [SerializeField] private int speed = 30;
         [SerializeField] private Animator animator;
+#pragma warning restore 649
 
         private TrainCar currentTrainCar;
 

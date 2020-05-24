@@ -4,7 +4,9 @@ namespace PenguinOnTheRun.Input
 {
     public class InputController : MonoBehaviour
     {
+#pragma warning disable 649
         [SerializeField] GameObject touchControlSystem;
+#pragma warning restore 649
 
         void Start()
         {

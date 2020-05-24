@@ -8,8 +8,10 @@ namespace PenguinOnTheRun.Gameplay
     {
         public enum ObstacleType { OBSTACLE, ENEMY, GRANDMA, DOG };
 
+#pragma warning disable 649
         [SerializeField] protected ObstacleType obstacleType = ObstacleType.OBSTACLE;
         [SerializeField] protected int damageAmount = 0;
+#pragma warning restore 649
 
         public ObstacleType GetObstacleType()
         {

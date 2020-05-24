@@ -9,9 +9,11 @@ namespace PenguinOnTheRun.Gameplay
     {
         public enum GrandmaType { LEFT, RIGHT };
 
+#pragma warning disable 649
         [SerializeField] private GrandmaFlip grandmaFlip;
         [SerializeField] private GrandmaType grandmaType;
         [SerializeField] private float flipArea = 3f;
+#pragma warning restore 649
 
         private void Update()
         {

@@ -3,12 +3,12 @@ using PenguinOnTheRun.UI;
 using Rewired;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace PenguinOnTheRun.Gameplay
 {
     public class Player : MonoBehaviour
     {
+#pragma warning disable 649
         [SerializeField] private Animator animator;
         [SerializeField] private Transform container;
         [SerializeField] private AnimationCurve laneChangeTransition;
@@ -19,6 +19,7 @@ namespace PenguinOnTheRun.Gameplay
         [SerializeField] private float minimumRunningSpeed = 0.1f;
         [SerializeField] private int maxHealth = 3;
         [SerializeField] private int health = 3;
+#pragma warning restore 649
 
         public static Player Instance { get; private set; }
 
@@ -103,7 +104,7 @@ namespace PenguinOnTheRun.Gameplay
 
             PenguinSounds.Instance.PlayHappySound();
 
-            if (pickableObject.GetObjectType() == PickableObject.ObjectType.FISH && health < 3)
+            if (pickableObject.GetObjectType() == PickableObject.ObjectType.FISH && health < maxHealth)
             {
                 InfoCanvas.Instance.AddFish(health);
                 health++;

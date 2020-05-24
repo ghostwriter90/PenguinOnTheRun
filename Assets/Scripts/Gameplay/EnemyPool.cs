@@ -5,8 +5,10 @@ namespace PenguinOnTheRun.Gameplay
 {
     public class EnemyPool : MonoBehaviour
     {
+#pragma warning disable 649
         [SerializeField] private Enemy[] conductorSamples;
         [SerializeField] private int defaultConductorCount = 8;
+#pragma warning restore 649
 
         private List<Enemy> enemyPool = new List<Enemy>();
         private HashSet<Enemy> activeConductors = new HashSet<Enemy>();

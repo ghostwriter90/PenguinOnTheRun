@@ -8,9 +8,11 @@ namespace PenguinOnTheRun.Gameplay
         public enum EnemyType { SMALL_CONDUCTOR, TALL_CONDUCTOR, CHICKEN };
         public enum LaneSet { ANY_LANE, LUGGAGE_LANE, PASSANGER_LANE };
 
+#pragma warning disable 649
         [SerializeField] private float speed = 2;
         [SerializeField] private EnemyType enemyType;
         [SerializeField] private LaneSet enabledLanes;
+#pragma warning restore 649
 
         private readonly int penguinFound = Animator.StringToHash("penguinFound");
 
@@ -65,7 +67,6 @@ namespace PenguinOnTheRun.Gameplay
             if (enemyType != EnemyType.CHICKEN)
             {
                 animator.SetTrigger(penguinFound);
-                Debug.Log("Penguin found");
                 speed = 0;
             }
         }

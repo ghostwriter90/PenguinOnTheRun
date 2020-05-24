@@ -6,6 +6,7 @@ namespace PenguinOnTheRun.Gameplay
 {
     public class GameManager : MonoBehaviour
     {
+#pragma warning disable 649
         [SerializeField] private Player player;
         [SerializeField] private TrainCar startCar;
         [SerializeField] private TrainCar[] sampleCars;
@@ -14,6 +15,7 @@ namespace PenguinOnTheRun.Gameplay
 
         [SerializeField] private List<TrainCar> availableCars = new List<TrainCar>();
         [SerializeField] private List<TrainCar> spawnedCars = new List<TrainCar>();
+#pragma warning restore 649
 
         private TrainCar lastSpawnedCar;
 

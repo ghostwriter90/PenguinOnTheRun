@@ -6,10 +6,11 @@ namespace PenguinOnTheRun.UI
     {
         public enum ItemType { FISH, BONE };
         public enum ExistType { FULL, MISSING };
-
+#pragma warning disable 649
         [SerializeField] ItemType itemType;
         [SerializeField] ExistType existType;
         [SerializeField] int index;
+#pragma warning restore 649
 
         public ItemType GetItemType()
         {

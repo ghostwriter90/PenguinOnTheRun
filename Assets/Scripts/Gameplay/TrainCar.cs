@@ -14,6 +14,7 @@ namespace PenguinOnTheRun.Gameplay
 
         private List<Enemy> enemies;
 
+
         public void Initialize(TrainCarSetting carSetting)
         {
             enemies = new List<Enemy>();

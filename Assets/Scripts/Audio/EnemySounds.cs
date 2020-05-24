@@ -5,10 +5,11 @@ namespace PenguinOnTheRun.Audio
 {
     public class EnemySounds : MonoBehaviour
     {
-
+#pragma warning disable 649
         [SerializeField] AudioClip[] smallConductorSounds;
         [SerializeField] AudioClip[] tallConductorSounds;
         [SerializeField] AudioClip[] grandmaSounds;
+#pragma warning restore 649
 
         private AudioSource soundSource;
 

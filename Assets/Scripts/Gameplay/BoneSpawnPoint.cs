@@ -5,7 +5,9 @@ namespace PenguinOnTheRun.Gameplay
     [ExecuteInEditMode, SelectionBase]
     public class BoneSpawnPoint : PickableSpawnPoint
     {
+#pragma warning disable 649
         [SerializeField] private Bone boneSample;
+#pragma warning restore 649
 
         public override void SpawnInstance()
         {

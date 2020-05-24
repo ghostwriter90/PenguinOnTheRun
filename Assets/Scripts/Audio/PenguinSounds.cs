@@ -4,10 +4,12 @@ namespace PenguinOnTheRun.Audio
 {
     public class PenguinSounds : MonoBehaviour
     {
+#pragma warning disable 649
         [SerializeField] private AudioClip[] happySounds;
         [SerializeField] private AudioClip[] upSounds;
         [SerializeField] private AudioClip[] downSounds;
         [SerializeField] private AudioClip[] sadSounds;
+#pragma warning restore 649
 
         private AudioSource soundSource;
 

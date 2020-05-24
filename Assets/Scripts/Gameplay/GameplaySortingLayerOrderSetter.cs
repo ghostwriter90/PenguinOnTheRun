@@ -6,8 +6,10 @@ namespace PenguinOnTheRun.Gameplay
     [RequireComponent(typeof(SpriteRenderer)), ExecuteInEditMode]
     public class GameplaySortingLayerOrderSetter : MonoBehaviour
     {
+#pragma warning disable 649
         [SerializeField] private int offset = 0;
         [SerializeField] private bool enableUpdateInPlayMode = false;
+#pragma warning restore 649
 
         private SpriteRenderer spriteRenderer;
 

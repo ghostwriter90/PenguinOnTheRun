@@ -4,8 +4,10 @@ namespace PenguinOnTheRun.CameraControl
 {
     public class CameraController : MonoBehaviour
     {
+#pragma warning disable 649
         [SerializeField] private bool enableUpdateInPlaymode = true;
         [SerializeField] private Camera cameraReference;
+#pragma warning restore 649
 
         private float startOrtographicSize;
 

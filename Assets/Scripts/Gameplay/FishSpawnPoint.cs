@@ -5,7 +5,9 @@ namespace PenguinOnTheRun.Gameplay
     [ExecuteInEditMode, SelectionBase]
     public class FishSpawnPoint : PickableSpawnPoint
     {
+#pragma warning disable 649
         [SerializeField] private Fish fishSample;
+#pragma warning restore 649
 
         public override void SpawnInstance()
         {
