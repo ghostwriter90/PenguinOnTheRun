@@ -41,6 +41,9 @@ namespace PenguinOnTheRun.Gameplay
 
         void Start()
         {
+            if (!Application.isPlaying)
+                return;
+
             currentTrainCar = GameManager.Instance.GetStartTrainCar();
         }
 
