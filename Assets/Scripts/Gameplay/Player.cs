@@ -96,6 +96,11 @@ namespace PenguinOnTheRun.Gameplay
             if (pickableObject == null)
                 return;
 
+            pickableObject.gameObject.SetActive(false);
+
+            if (health <= 0)
+                return;
+
             PenguinSounds.Instance.PlayHappySound();
 
             if (pickableObject.GetObjectType() == PickableObject.ObjectType.FISH && health < 3)
@@ -107,8 +112,6 @@ namespace PenguinOnTheRun.Gameplay
             {
                 Dog.Instance.AddBone();
             }
-
-            pickableObject.gameObject.SetActive(false);
         }
 
         private void HandleMovement(float horizontalMovenent)
@@ -237,14 +240,9 @@ namespace PenguinOnTheRun.Gameplay
 
         public void Death()
         {
-            if (health <= 0)
-                return;
-
             animator.SetTrigger(deathTrigger);
             PenguinSounds.Instance.PlaySadSound();
             InfoCanvas.Instance.GameOver();
-
-            SceneManager.LoadScene(0);
         }
 
         IEnumerator WaitDamageInterval()
@@ -290,7 +288,7 @@ namespace PenguinOnTheRun.Gameplay
 
         public bool IsHealthy()
         {
-            return health == maxHealth;
+            return health > 0 && !isDuringDamage;
         }
 
         private void SetSpriteDirection(bool isFacingRight)

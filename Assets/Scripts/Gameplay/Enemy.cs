@@ -65,6 +65,7 @@ namespace PenguinOnTheRun.Gameplay
             if (enemyType != EnemyType.CHICKEN)
             {
                 animator.SetTrigger(penguinFound);
+                Debug.Log("Penguin found");
                 speed = 0;
             }
         }

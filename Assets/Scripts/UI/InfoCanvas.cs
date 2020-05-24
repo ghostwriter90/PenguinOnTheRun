@@ -1,18 +1,29 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace PenguinOnTheRun.UI
 {
     public class InfoCanvas : MonoBehaviour
     {
+        private const int mainSceneIndex = 0;
+        private const int maxFishCount = 3;
+        private const int maxBoneCount = 3;
 
-        [SerializeField] CanvasItem[] fishesFull = new CanvasItem[3];
-        [SerializeField] CanvasItem[] bonesFull = new CanvasItem[3];
-        [SerializeField] CanvasItem[] fishesMissing = new CanvasItem[3];
-        [SerializeField] CanvasItem[] bonesMissing = new CanvasItem[3];
+        [Header("GameOver")]
+        [SerializeField] private GameObject gameOverPanel;
+        [SerializeField] private Button replayButton;
+
+        [Header("GamePlay")]
+        [SerializeField] private CanvasItem[] fishesFull = new CanvasItem[maxFishCount];
+        [SerializeField] private CanvasItem[] bonesFull = new CanvasItem[maxBoneCount];
+        [SerializeField] private CanvasItem[] fishesMissing = new CanvasItem[maxFishCount];
+        [SerializeField] private CanvasItem[] bonesMissing = new CanvasItem[maxBoneCount];
+
 
         public static InfoCanvas Instance { get; private set; }
 
-        void Awake()
+        private void Awake()
         {
             if (Instance != null)
             {
@@ -22,11 +33,13 @@ namespace PenguinOnTheRun.UI
             {
                 Instance = this;
             }
+
+            replayButton.onClick.AddListener(OnReplay);
         }
 
         public void AddFish(int health)
         {
-            if ((health < 3) && (health >= 0))
+            if ((health < maxFishCount) && (health >= 0))
             {
                 fishesFull[health].gameObject.SetActive(true);
                 fishesMissing[health].gameObject.SetActive(false);
@@ -46,7 +59,7 @@ namespace PenguinOnTheRun.UI
 
         public void AddBone(int bones)
         {
-            if (bones < 3)
+            if (bones < maxBoneCount)
             {
                 bonesFull[bones].gameObject.SetActive(true);
                 bonesMissing[bones].gameObject.SetActive(false);
@@ -55,7 +68,7 @@ namespace PenguinOnTheRun.UI
 
         public void ResetBones()
         {
-            for (int i = 0; i < 3; ++i)
+            for (int i = 0; i < maxBoneCount; ++i)
             {
                 bonesFull[i].gameObject.SetActive(false);
                 bonesMissing[i].gameObject.SetActive(true);
@@ -64,11 +77,19 @@ namespace PenguinOnTheRun.UI
 
         public void GameOver()
         {
-            for (int i = 0; i < 3; ++i)
+            for (int i = 0; i < maxFishCount; ++i)
             {
                 fishesFull[i].gameObject.SetActive(false);
                 fishesMissing[i].gameObject.SetActive(true);
             }
+
+            gameOverPanel.SetActive(true);
+        }
+
+        private void OnReplay()
+        {
+            gameOverPanel.SetActive(false);
+            SceneManager.LoadScene(mainSceneIndex);
         }
     }
 }
