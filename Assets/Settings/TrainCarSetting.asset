@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ConductorCount: 2
   GrandmaCount: 2
-  BoneCount: 4
+  BoneCount: 3
   FishCount: 1

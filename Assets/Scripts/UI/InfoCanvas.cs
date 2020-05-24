@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -19,9 +20,15 @@ namespace PenguinOnTheRun.UI
         [SerializeField] private GameObject[] bonesFull = new GameObject[maxBoneCount];
         [SerializeField] private GameObject[] fishesMissing = new GameObject[maxFishCount];
         [SerializeField] private GameObject[] bonesMissing = new GameObject[maxBoneCount];
+
+        [Header("Sound")]
+        [SerializeField] private Button muteSound;
+        [SerializeField] private Button loudSound;
 #pragma warning restore 649
 
         public static InfoCanvas Instance { get; private set; }
+
+        public static Action<bool> ToggleSound;
 
         private void Awake()
         {
@@ -35,6 +42,8 @@ namespace PenguinOnTheRun.UI
             }
 
             replayButton.onClick.AddListener(OnReplay);
+            muteSound.onClick.AddListener(LoudSound);
+            loudSound.onClick.AddListener(MuteSound);
         }
 
         public void AddFish(int health)
@@ -88,6 +97,20 @@ namespace PenguinOnTheRun.UI
         {
             gameOverPanel.SetActive(false);
             SceneManager.LoadScene(mainSceneIndex);
+        }
+
+        private void MuteSound()
+        {
+            muteSound.gameObject.SetActive(true);
+            loudSound.gameObject.SetActive(false);
+            ToggleSound?.Invoke(false);
+        }
+
+        private void LoudSound()
+        {
+            muteSound.gameObject.SetActive(false);
+            loudSound.gameObject.SetActive(true);
+            ToggleSound?.Invoke(true);
         }
     }
 }
