@@ -41,7 +41,7 @@ namespace PenguinOnTheRun.Gameplay
 
         private void InitializeChairs(int grandmaCount)
         {
-            ChairOrGrandma[] chairs = GetComponentsInChildren<ChairOrGrandma>();
+            ChairSpawnPoint[] chairs = GetComponentsInChildren<ChairSpawnPoint>();
             HashSet<int> selectedIndexSet = new HashSet<int>();
 
             for (int i = 0; i < Mathf.Min(grandmaCount, chairs.Length); i++)

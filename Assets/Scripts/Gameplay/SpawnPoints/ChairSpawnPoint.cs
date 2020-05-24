@@ -3,7 +3,7 @@
 namespace PenguinOnTheRun.Gameplay.SpawnPoints
 {
 	[ExecuteInEditMode, SelectionBase]
-	public class ChairOrGrandma : MonoBehaviour
+	public class ChairSpawnPoint : MonoBehaviour
 	{
 #pragma warning disable 649
 		[SerializeField] Transform chairPrefab;
