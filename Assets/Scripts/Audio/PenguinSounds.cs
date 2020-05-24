@@ -4,16 +4,15 @@ namespace PenguinOnTheRun.Audio
 {
     public class PenguinSounds : MonoBehaviour
     {
-        [SerializeField] AudioClip[] happySounds;
-        [SerializeField] AudioClip[] upSounds;
-        [SerializeField] AudioClip[] downSounds;
-        [SerializeField] AudioClip[] sadSounds;
+        [SerializeField] private AudioClip[] happySounds;
+        [SerializeField] private AudioClip[] upSounds;
+        [SerializeField] private AudioClip[] downSounds;
+        [SerializeField] private AudioClip[] sadSounds;
 
         private AudioSource soundSource;
 
         public static PenguinSounds Instance;
 
-        // Use this for initialization
         void Awake()
         {
             soundSource = GetComponent<AudioSource>();

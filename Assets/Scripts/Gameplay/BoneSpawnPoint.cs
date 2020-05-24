@@ -3,34 +3,14 @@
 namespace PenguinOnTheRun.Gameplay
 {
     [ExecuteInEditMode, SelectionBase]
-    public class BoneSpawnPoint : MonoBehaviour
+    public class BoneSpawnPoint : PickableSpawnPoint
     {
         [SerializeField] private Bone boneSample;
 
-        private int laneIndex;
-        private float distanceFromCarEntrance;
-
-        public void SpawnInstance()
+        public override void SpawnInstance()
         {
             Bone copy = Instantiate(boneSample);
-            copy.transform.SetParent(transform.parent);
-            copy.transform.localPosition = transform.localPosition;
-        }
-
-        public void SetData(int laneIndex, float distanceFromCarEntrance)
-        {
-            this.laneIndex = laneIndex;
-            this.distanceFromCarEntrance = distanceFromCarEntrance;
-        }
-
-        public int GetLaneIndex()
-        {
-            return laneIndex;
-        }
-
-        public float GetDistanceFromCarEntrance()
-        {
-            return distanceFromCarEntrance;
+            SpawnInstance(copy);
         }
 
         void OnDrawGizmos()

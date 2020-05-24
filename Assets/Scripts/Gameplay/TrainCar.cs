@@ -87,46 +87,37 @@ namespace PenguinOnTheRun.Gameplay
         private void SpawnBones(int boneCount)
         {
             BoneSpawnPoint[] boneSpawnPoints = GetComponentsInChildren<BoneSpawnPoint>();
-            HashSet<int> selectedIndexList = new HashSet<int>();
-
-            for (int i = 0; i < Mathf.Min(boneCount, boneSpawnPoints.Length); i++)
-            {
-                int selectedIndex;
-                do
-                {
-                    selectedIndex = Random.Range(0, boneSpawnPoints.Length);
-                }
-                while (selectedIndexList.Contains(selectedIndex));
-
-                selectedIndexList.Add(selectedIndex);
-                BoneSpawnPoint spawnPoint = boneSpawnPoints[selectedIndex];
-                spawnPoint.SpawnInstance();
-            }
+            SpawnPickableObjects(boneSpawnPoints, boneCount);
         }
 
         private void SpawnFishes(int fishCount)
         {
             FishSpawnPoint[] fishSpawnPoints = GetComponentsInChildren<FishSpawnPoint>();
+            SpawnPickableObjects(fishSpawnPoints, fishCount);
+        }
+
+        private void SpawnPickableObjects(PickableSpawnPoint[] spawnPoints, int count)
+        {
             HashSet<int> selectedIndexList = new HashSet<int>();
 
-            for (int i = 0; i < Mathf.Min(fishCount, fishSpawnPoints.Length); i++)
+            for (int i = 0; i < Mathf.Min(count, spawnPoints.Length); i++)
             {
                 int selectedIndex;
                 do
                 {
-                    selectedIndex = Random.Range(0, fishSpawnPoints.Length);
+                    selectedIndex = Random.Range(0, spawnPoints.Length);
                 }
                 while (selectedIndexList.Contains(selectedIndex));
 
                 selectedIndexList.Add(selectedIndex);
-                FishSpawnPoint spawnPoint = fishSpawnPoints[selectedIndex];
+                PickableSpawnPoint spawnPoint = spawnPoints[selectedIndex];
                 spawnPoint.SpawnInstance();
             }
         }
 
-        public bool IsTrainCarExit(int laneIndex, float distanceFromCarEntrance, float accaptableNoise)
+        public bool IsTrainCarExit(int laneIndex, float distanceFromCarEntrance, float acceptableNoise)
         {
-            if ((distanceFromCarEntrance >= lanes[laneIndex].transform.localPosition.x + length - accaptableNoise)
+            if ((distanceFromCarEntrance >= lanes[laneIndex].transform.localPosition.x + length - acceptableNoise)
                 && (laneIndex == mainLaneIndex))
             {
                 return true;

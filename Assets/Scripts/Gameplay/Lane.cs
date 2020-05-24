@@ -21,18 +21,6 @@ namespace PenguinOnTheRun.Gameplay
             {
                 spawnPoint.SetData(laneIndex, spawnPoint.transform.localPosition.x);
             }
-
-            BoneSpawnPoint[] boneSpawnPoints = GetComponentsInChildren<BoneSpawnPoint>();
-            foreach (BoneSpawnPoint spawnPoint in boneSpawnPoints)
-            {
-                spawnPoint.SetData(laneIndex, spawnPoint.transform.localPosition.x);
-            }
-
-            FishSpawnPoint[] fishSpawnPoints = GetComponentsInChildren<FishSpawnPoint>();
-            foreach (FishSpawnPoint spawnPoint in fishSpawnPoints)
-            {
-                spawnPoint.SetData(laneIndex, spawnPoint.transform.localPosition.x);
-            }
         }
 
         public void UpdateObstacleList()
