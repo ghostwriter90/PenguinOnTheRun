@@ -1,4 +1,7 @@
-﻿using PenguinOnTheRun.Settings;
+﻿using PenguinOnTheRun.Gameplay.Obstacles;
+using PenguinOnTheRun.Gameplay.Pickables;
+using PenguinOnTheRun.Gameplay.SpawnPoints;
+using PenguinOnTheRun.Settings;
 using System.Collections.Generic;
 using UnityEngine;
 

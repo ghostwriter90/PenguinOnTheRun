@@ -43,8 +43,6 @@ namespace PenguinOnTheRun.UI
             {
                 fishesFull[health].gameObject.SetActive(true);
                 fishesMissing[health].gameObject.SetActive(false);
-
-                Debug.Log("add fish = " + health, fishesFull[health].gameObject);
             }
         }
 

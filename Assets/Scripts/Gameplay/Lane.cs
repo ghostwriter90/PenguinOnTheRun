@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using PenguinOnTheRun.Gameplay.Obstacles;
+using PenguinOnTheRun.Gameplay.Pickables;
+using UnityEngine;
 
 namespace PenguinOnTheRun.Gameplay
 {

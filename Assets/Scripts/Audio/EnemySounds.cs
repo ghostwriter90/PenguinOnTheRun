@@ -1,4 +1,4 @@
-﻿using PenguinOnTheRun.Gameplay;
+﻿using PenguinOnTheRun.Gameplay.Obstacles;
 using UnityEngine;
 
 namespace PenguinOnTheRun.Audio

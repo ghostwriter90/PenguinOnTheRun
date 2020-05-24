@@ -1,4 +1,6 @@
 ﻿using PenguinOnTheRun.Audio;
+using PenguinOnTheRun.Gameplay.Obstacles;
+using PenguinOnTheRun.Gameplay.Pickables;
 using PenguinOnTheRun.UI;
 using Rewired;
 using System.Collections;

@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using PenguinOnTheRun.Gameplay.Pickables;
+using UnityEngine;
 
-namespace PenguinOnTheRun.Gameplay
+namespace PenguinOnTheRun.Gameplay.SpawnPoints
 {
     public abstract class PickableSpawnPoint : MonoBehaviour
     {
