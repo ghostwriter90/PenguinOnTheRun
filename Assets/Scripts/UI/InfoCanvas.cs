@@ -35,7 +35,7 @@ namespace PenguinOnTheRun.UI
             }
         }
 
-        public void DamageFish(int health)
+        public void RemoveFish(int health)
         {
             if (health > 0)
             {
@@ -53,7 +53,7 @@ namespace PenguinOnTheRun.UI
             }
         }
 
-        public void ZeroBones()
+        public void ResetBones()
         {
             for (int i = 0; i < 3; ++i)
             {
@@ -62,7 +62,7 @@ namespace PenguinOnTheRun.UI
             }
         }
 
-        public void Die()
+        public void GameOver()
         {
             for (int i = 0; i < 3; ++i)
             {

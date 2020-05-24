@@ -25,10 +25,14 @@ namespace PenguinOnTheRun.Gameplay
         private readonly int changeLane = Animator.StringToHash("changeLane");
         private readonly int damageTrigger = Animator.StringToHash("damageTrigger");
         private readonly int deathTrigger = Animator.StringToHash("deathTrigger");
+        private readonly int isRunning = Animator.StringToHash("isRunning");
 
         private readonly string changeLaneDown = "changeLaneDown";
         private readonly string changeLaneUp = "changeLaneUp";
         private readonly string horizontalMovement = "horizontalMovement";
+
+        private readonly float distanceEpsilon = 0.1f;
+        private readonly float speedEpsilon = 0.1f;
 
         private TrainCar currentTrainCar;
         private float distanceFromCarEntrance;
@@ -36,7 +40,7 @@ namespace PenguinOnTheRun.Gameplay
         private bool isFacingRight = true;
         private bool isDuringLaneChange = false;
         private float currentSpeed = 0;
-        private bool isDamaging = false;
+        private bool isDuringDamage = false;
         private Rewired.Player rewiredPlayer;
 
         private void Awake()
@@ -74,8 +78,7 @@ namespace PenguinOnTheRun.Gameplay
             }
 
             float horizontalMovenent = rewiredPlayer.GetAxis(horizontalMovement);
-            HandleMovement((horizontalMovenent < -0.1f), (horizontalMovenent > 0.1f));
-
+            HandleMovement(horizontalMovenent);
             CheckPickableObject();
         }
 
@@ -108,47 +111,36 @@ namespace PenguinOnTheRun.Gameplay
             pickableObject.gameObject.SetActive(false);
         }
 
-        private void HandleMovement(bool isLeftPressed, bool isRightPressed)
+        private void HandleMovement(float horizontalMovenent)
         {
-            // TODO: change to:     void HandleMovement(float horizontalMovement)
-            if (isLeftPressed || isRightPressed)
+            bool isLeftPressed = horizontalMovenent < -speedEpsilon;
+            bool isRightPressed = horizontalMovenent > speedEpsilon;
+
+            if (isLeftPressed)
             {
-                if (isLeftPressed)
-                {
-                    currentSpeed = Mathf.Max(currentSpeed - acceleration * Time.deltaTime, -maxSpeed);
+                currentSpeed = Mathf.Max(currentSpeed - acceleration * Time.deltaTime, -maxSpeed);
 
-                    if (isFacingRight)
-                    {
-                        SetSpriteDirection(false);
-                    }
+                if (isFacingRight)
+                {
+                    SetSpriteDirection(false);
                 }
+            }
+            else if (isRightPressed)
+            {
+                currentSpeed = Mathf.Min(currentSpeed + acceleration * Time.deltaTime, maxSpeed);
 
-                if (isRightPressed)
+                if (!isFacingRight)
                 {
-                    currentSpeed = Mathf.Min(currentSpeed + acceleration * Time.deltaTime, maxSpeed);
-
-                    if (!isFacingRight)
-                    {
-                        SetSpriteDirection(true);
-                    }
+                    SetSpriteDirection(true);
                 }
             }
             else
             {
-                if (isFacingRight)
-                {
-                    currentSpeed -= deceleation * Time.deltaTime;
-                }
-                else
-                {
-                    currentSpeed += deceleation * Time.deltaTime;
-                }
+                float facingSign = isFacingRight ? -1f : 1f;
+                currentSpeed += deceleation * Time.deltaTime * facingSign;
 
-                if (isFacingRight && (currentSpeed < Mathf.Epsilon))
-                {
-                    currentSpeed = 0;
-                }
-                else if (!isFacingRight && (currentSpeed > -Mathf.Epsilon))
+                if (isFacingRight && (currentSpeed < Mathf.Epsilon)
+                    || !isFacingRight && (currentSpeed > -Mathf.Epsilon))
                 {
                     currentSpeed = 0;
                 }
@@ -167,11 +159,15 @@ namespace PenguinOnTheRun.Gameplay
                 currentSpeed = 0;
             }
 
-            animator.SetBool("isRunning", (currentSpeed > minimumRunningSpeed) || (currentSpeed < -minimumRunningSpeed));
+            animator.SetBool(isRunning, (currentSpeed > minimumRunningSpeed) || (currentSpeed < -minimumRunningSpeed));
 
-            if ((currentTrainCar != null)
-                && currentTrainCar.IsTrainCarExit(currentLaneIndex, distanceFromCarEntrance, length / 2f + 0.1f)
-                && (currentLaneIndex == TrainCar.mainLaneIndex))
+            if (currentTrainCar == null)
+                return;
+
+            if (currentLaneIndex != TrainCar.mainLaneIndex)
+                return;
+
+            if (currentTrainCar.IsTrainCarExit(currentLaneIndex, distanceFromCarEntrance, length / 2f + distanceEpsilon))
             {
                 GoToNextTrainCar();
             }
@@ -202,7 +198,7 @@ namespace PenguinOnTheRun.Gameplay
             animator.SetTrigger(changeLane);
 
             float deltaPosition = currentTrainCar.lanes[laneIndex].transform.localPosition.y
-                - currentTrainCar.lanes[currentLaneIndex].transform.localPosition.y;
+                    - currentTrainCar.lanes[currentLaneIndex].transform.localPosition.y;
 
             float time = 0;
             float duration = laneChangeTransition.keys[laneChangeTransition.keys.Length - 1].time;
@@ -221,7 +217,7 @@ namespace PenguinOnTheRun.Gameplay
 
         public void Damage(int damageAmount)
         {
-            if (health <= 0 || isDamaging)
+            if (health <= 0 || isDuringDamage)
                 return;
 
             health -= damageAmount;
@@ -233,10 +229,10 @@ namespace PenguinOnTheRun.Gameplay
             }
 
             animator.SetTrigger(damageTrigger);
-            PenguinSounds.Instance.PlaySadSound();
-            isDamaging = true;
+            
             StartCoroutine(WaitDamageInterval());
-            InfoCanvas.Instance.DamageFish(health);
+            InfoCanvas.Instance.RemoveFish(health);
+            PenguinSounds.Instance.PlaySadSound();
         }
 
         public void Death()
@@ -246,16 +242,18 @@ namespace PenguinOnTheRun.Gameplay
 
             animator.SetTrigger(deathTrigger);
             PenguinSounds.Instance.PlaySadSound();
-            InfoCanvas.Instance.Die();
+            InfoCanvas.Instance.GameOver();
 
             SceneManager.LoadScene(0);
         }
 
         IEnumerator WaitDamageInterval()
         {
+            isDuringDamage = true;
+
             yield return new WaitForSeconds(1f);
 
-            isDamaging = false;
+            isDuringDamage = false;
         }
 
         public void SetStartTrainCar(TrainCar trainCar)

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using PenguinOnTheRun.Settings;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace PenguinOnTheRun.Gameplay
@@ -8,6 +9,7 @@ namespace PenguinOnTheRun.Gameplay
         [SerializeField] private Player player;
         [SerializeField] private TrainCar startCar;
         [SerializeField] private TrainCar[] sampleCars;
+        [SerializeField] private TrainCarSetting carSetting;
         [SerializeField] private int minimumCarInstanceCount = 10;
 
         [SerializeField] private List<TrainCar> availableCars = new List<TrainCar>();
@@ -72,7 +74,7 @@ namespace PenguinOnTheRun.Gameplay
             if (isStartCar)
             {
                 newCar = startCar;
-                newCar.Initialize();
+                newCar.Initialize(carSetting);
             }
             else
             {
@@ -80,7 +82,7 @@ namespace PenguinOnTheRun.Gameplay
                 newCar = availableCars[randomIndex];
                 availableCars.RemoveAt(randomIndex);
 
-                newCar.Initialize();
+                newCar.Initialize(carSetting);
             }
 
             if (lastSpawnedCar != null)

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using PenguinOnTheRun.Settings;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace PenguinOnTheRun.Gameplay
@@ -13,23 +14,19 @@ namespace PenguinOnTheRun.Gameplay
 
         private List<Enemy> enemies;
 
-        public void Initialize()
+        public void Initialize(TrainCarSetting carSetting)
         {
             enemies = new List<Enemy>();
-            Initialize(2, 2, 4, 1);
-        }
 
-        public void Initialize(int conductorCount, int grandmaCount, int boneCount, int fishCount)
-        {
             for (int i = 0; i < lanes.Length; i++)
             {
                 lanes[i].Initialize(this, i);
             }
 
-            SpawnConductors(conductorCount);
-            SpawnBones(boneCount);
-            SpawnFishes(fishCount);
-            InitializeChairOrGrandmas(grandmaCount);
+            SpawnConductors(carSetting.ConductorCount);
+            SpawnBones(carSetting.BoneCount);
+            SpawnFishes(carSetting.FishCount);
+            InitializeChairs(carSetting.GrandmaCount);
 
             for (int i = 0; i < lanes.Length; i++)
             {
@@ -38,29 +35,29 @@ namespace PenguinOnTheRun.Gameplay
             }
         }
 
-        void InitializeChairOrGrandmas(int grandmaCount)
+        private void InitializeChairs(int grandmaCount)
         {
-            ChairOrGrandma[] chairOrGrandmas = GetComponentsInChildren<ChairOrGrandma>();
+            ChairOrGrandma[] chairs = GetComponentsInChildren<ChairOrGrandma>();
             HashSet<int> selectedIndexSet = new HashSet<int>();
 
-            for (int i = 0; i < Mathf.Min(grandmaCount, chairOrGrandmas.Length); i++)
+            for (int i = 0; i < Mathf.Min(grandmaCount, chairs.Length); i++)
             {
                 int selectedIndex;
                 do
                 {
-                    selectedIndex = UnityEngine.Random.Range(0, chairOrGrandmas.Length);
+                    selectedIndex = Random.Range(0, chairs.Length);
                 }
                 while (selectedIndexSet.Contains(selectedIndex));
                 selectedIndexSet.Add(selectedIndex);
             }
 
-            for (int i = 0; i < chairOrGrandmas.Length; i++)
+            for (int i = 0; i < chairs.Length; i++)
             {
-                chairOrGrandmas[i].Initialize(selectedIndexSet.Contains(i));
+                chairs[i].Initialize(selectedIndexSet.Contains(i));
             }
         }
 
-        void SpawnConductors(int conductorCount)
+        private void SpawnConductors(int conductorCount)
         {
             ConductorSpawnPoint[] conductorSpawnPoints = GetComponentsInChildren<ConductorSpawnPoint>();
             HashSet<int> selectedIndexList = new HashSet<int>();
@@ -70,7 +67,7 @@ namespace PenguinOnTheRun.Gameplay
                 int selectedIndex;
                 do
                 {
-                    selectedIndex = UnityEngine.Random.Range(0, conductorSpawnPoints.Length);
+                    selectedIndex = Random.Range(0, conductorSpawnPoints.Length);
                 }
                 while (selectedIndexList.Contains(selectedIndex));
 
@@ -87,7 +84,7 @@ namespace PenguinOnTheRun.Gameplay
             }
         }
 
-        void SpawnBones(int boneCount)
+        private void SpawnBones(int boneCount)
         {
             BoneSpawnPoint[] boneSpawnPoints = GetComponentsInChildren<BoneSpawnPoint>();
             HashSet<int> selectedIndexList = new HashSet<int>();
@@ -97,7 +94,7 @@ namespace PenguinOnTheRun.Gameplay
                 int selectedIndex;
                 do
                 {
-                    selectedIndex = UnityEngine.Random.Range(0, boneSpawnPoints.Length);
+                    selectedIndex = Random.Range(0, boneSpawnPoints.Length);
                 }
                 while (selectedIndexList.Contains(selectedIndex));
 
@@ -107,7 +104,7 @@ namespace PenguinOnTheRun.Gameplay
             }
         }
 
-        void SpawnFishes(int fishCount)
+        private void SpawnFishes(int fishCount)
         {
             FishSpawnPoint[] fishSpawnPoints = GetComponentsInChildren<FishSpawnPoint>();
             HashSet<int> selectedIndexList = new HashSet<int>();
@@ -117,7 +114,7 @@ namespace PenguinOnTheRun.Gameplay
                 int selectedIndex;
                 do
                 {
-                    selectedIndex = UnityEngine.Random.Range(0, fishSpawnPoints.Length);
+                    selectedIndex = Random.Range(0, fishSpawnPoints.Length);
                 }
                 while (selectedIndexList.Contains(selectedIndex));
 
@@ -138,18 +135,24 @@ namespace PenguinOnTheRun.Gameplay
             return false;
         }
 
-        public bool IsTrainCarEdge(int laneIndex, float distanceFromCarEntrance, float lenght)
+        public bool IsTrainCarEdge(int laneIndex, float distanceFromCarEntrance, float length)
         {
-            if (distanceFromCarEntrance - lenght / 2f < lanes[laneIndex].transform.localPosition.x)
+            if (distanceFromCarEntrance - length / 2f < lanes[laneIndex].transform.localPosition.x)
             {
                 return true;
             }
-            else if ((distanceFromCarEntrance + lenght / 2f >= lanes[laneIndex].transform.localPosition.x + length))
+            else if (distanceFromCarEntrance + length / 2f >= lanes[laneIndex].transform.localPosition.x + this.length)
             {
                 return true;
             }
 
             return false;
+        }
+
+        public void Disable()
+        {
+            EnemyPool.DisableEnemies(enemies);
+            gameObject.SetActive(false);
         }
 
         void OnDrawGizmos()
@@ -159,29 +162,6 @@ namespace PenguinOnTheRun.Gameplay
             {
                 Gizmos.DrawLine(lanes[i].transform.position, lanes[i].transform.position + Vector3.right * length);
             }
-        }
-
-        public void Disable()
-        {
-            EnemyPool.DisableEnemies(enemies);
-            gameObject.SetActive(false);
-        }
-
-        public PickableObject GetPickableObject(int laneIndex, float horizontalPosition, float size)
-        {
-            for (int i = 0; i < pickableObjects.Length; i++)
-            {
-                if (//laneIndex == pickableObjects[i].GetLaneIndex() &&
-                    pickableObjects[i].gameObject.activeSelf &&
-                    (horizontalPosition - transform.localPosition.x - size / 2f) < (pickableObjects[i].transform.localPosition.x + pickableObjects[i].GetLength() / 2f)
-                   //&& (horizontalPosition - transform.localPosition.x + size / 2f) > (pickableObjects[i].transform.localPosition.x - pickableObjects[i].GetLength() / 2f)
-                   )
-                {
-                    return pickableObjects[i];
-                }
-            }
-
-            return null;
         }
     }
 }

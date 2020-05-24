@@ -111,7 +111,7 @@ namespace PenguinOnTheRun.Gameplay
         private void ResetBoneCount()
         {
             boneCount = 0;
-            InfoCanvas.Instance.ZeroBones();
+            InfoCanvas.Instance.ResetBones();
         }
     }
 }
