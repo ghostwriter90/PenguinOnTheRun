@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using BasicTools.Utility;
 using System;
 
 namespace BasicTools.Utility

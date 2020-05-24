@@ -1,4 +1,5 @@
-﻿using PenguinOnTheRun.Audio;
+﻿using BasicTools.Utility;
+using PenguinOnTheRun.Audio;
 using UnityEngine;
 
 
@@ -32,17 +33,12 @@ namespace PenguinOnTheRun.Gameplay.Obstacles
             if ((trainCar == Player.Instance.GetCurrentTrainCar())
                 && (laneIndex == Player.Instance.GetLaneIndex())
                 && Player.Instance.IsHealthy()
-                && IsOverlappingRectangle(playerPos - playerLength / 2f, playerPos + playerLength / 2f, GetFlipAreaLeft(), GetFlipAreaRight()))
+                && RectangleUtility.IsOverlappingRectangle(playerPos - playerLength / 2f, playerPos + playerLength / 2f, GetFlipAreaLeft(), GetFlipAreaRight()))
             {
                 return true;
             }
 
             return false;
-        }
-
-        private bool IsOverlappingRectangle(float startA, float endA, float startB, float endB)
-        {
-            return (startA < endB) && (endA > startB);
         }
 
         private float GetFlipAreaLeft()

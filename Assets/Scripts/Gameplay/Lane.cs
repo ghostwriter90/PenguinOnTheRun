@@ -1,4 +1,5 @@
-﻿using PenguinOnTheRun.Gameplay.Obstacles;
+﻿using BasicTools.Utility;
+using PenguinOnTheRun.Gameplay.Obstacles;
 using PenguinOnTheRun.Gameplay.Pickables;
 using UnityEngine;
 
@@ -64,17 +65,12 @@ namespace PenguinOnTheRun.Gameplay
             float startB = Dog.PositionX - Dog.Instance.GetLength() / 2;
             float endB = Dog.PositionX + Dog.Instance.GetLength() / 2;
 
-            if (Dog.IsActive && IsOverlappingRectangle(startA, endA, startB, endB))
+            if (Dog.IsActive && RectangleUtility.IsOverlappingRectangle(startA, endA, startB, endB))
             {
                 return Dog.Instance;
             }
 
             return null;
-        }
-
-        bool IsOverlappingRectangle(float startA, float endA, float startB, float endB)
-        {
-            return (startA < endB) && (endA > startB);
         }
 
         public PickableObject GetPickableObject(float horizontalPosition, float size)

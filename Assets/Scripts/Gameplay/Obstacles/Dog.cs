@@ -26,7 +26,7 @@ namespace PenguinOnTheRun.Gameplay.Obstacles
         public static bool IsActive => Instance.gameObject.activeInHierarchy;
         public static float PositionX => Instance.transform.position.x;
 
-        void Awake()
+        private void Awake()
         {
             if (!Application.isPlaying)
                 return;
@@ -41,7 +41,7 @@ namespace PenguinOnTheRun.Gameplay.Obstacles
             }
         }
 
-        void Start()
+        private void Start()
         {
             if (!Application.isPlaying)
                 return;
@@ -49,7 +49,7 @@ namespace PenguinOnTheRun.Gameplay.Obstacles
             currentTrainCar = GameManager.Instance.GetStartTrainCar();
         }
 
-        void Update()
+        private void Update()
         {
             if (!Application.isPlaying)
                 return;
