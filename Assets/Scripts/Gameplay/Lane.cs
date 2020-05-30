@@ -60,6 +60,11 @@ namespace PenguinOnTheRun.Gameplay
                 }
             }
 
+            return GetDog(horizontalPosition, size);
+        }
+
+        public Dog GetDog(float horizontalPosition, float size)
+        {
             float startA = transform.position.x + horizontalPosition - size / 2f;
             float endA = transform.position.x + horizontalPosition + size / 2f;
             float startB = Dog.PositionX - Dog.Instance.GetLength() / 2;

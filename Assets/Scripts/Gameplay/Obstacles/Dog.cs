@@ -1,4 +1,5 @@
 ﻿using PenguinOnTheRun.UI;
+using System.Collections;
 using UnityEngine;
 
 namespace PenguinOnTheRun.Gameplay.Obstacles
@@ -7,8 +8,10 @@ namespace PenguinOnTheRun.Gameplay.Obstacles
     {
 #pragma warning disable 649
         [SerializeField] private int maxBoneCount = 3;
-        [SerializeField] private float offset = 0;
         [SerializeField] private int speed = 30;
+        [SerializeField] private float offset = 0;
+        [SerializeField] private float boneHintDuration = 1f;
+        [SerializeField] private SpriteRenderer boneHint;
         [SerializeField] private Animator animator;
 #pragma warning restore 649
 
@@ -16,6 +19,7 @@ namespace PenguinOnTheRun.Gameplay.Obstacles
 
         private int boneCount = 0;
         private bool isRunning = false;
+        private bool isBoneHitActive = false;
 
         private readonly int startRun = Animator.StringToHash("dogStartRun");
         private readonly int stopRun = Animator.StringToHash("dogStop");
@@ -65,6 +69,47 @@ namespace PenguinOnTheRun.Gameplay.Obstacles
             boneCount++;
             animator.SetInteger(updatedBoneCount, boneCount);
             InfoCanvas.Instance.AddBone(boneCount - 1);
+        }
+
+        public void BoneHint()
+        {
+            if (isBoneHitActive)
+                return;
+
+            StartCoroutine(HintFadeInFadeOut());
+        }
+
+        private IEnumerator HintFadeInFadeOut()
+        {
+            isBoneHitActive = true;
+            float startTime = Time.time;
+            Color originalColor = boneHint.color;
+
+            while (Time.time - startTime < boneHintDuration)
+            {
+                float alpha = Mathf.Lerp(0f, 1f, (Time.time - startTime) / boneHintDuration);
+                originalColor.a = alpha;
+                boneHint.color = originalColor;
+
+                yield return null;
+            }
+
+            yield return new WaitForSeconds(boneHintDuration);
+
+            startTime = Time.time;
+
+            while (Time.time - startTime < boneHintDuration)
+            {
+                float alpha = Mathf.Lerp(1f, 0f, (Time.time - startTime) / boneHintDuration);
+                originalColor.a = alpha;
+                boneHint.color = originalColor;
+
+                yield return null;
+            }
+
+            originalColor.a = 0f;
+            boneHint.color = originalColor;
+            isBoneHitActive = false;
         }
 
         public void DogRun()

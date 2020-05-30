@@ -89,7 +89,14 @@ namespace PenguinOnTheRun.Gameplay
         {
             Obstacle obstacle = currentTrainCar.lanes[laneIndex].GetObstacle(distanceFromCarEntrance, length);
 
-            return obstacle == null || obstacle.GetObstacleType().Equals(Obstacle.ObstacleType.ENEMY);
+            return obstacle == null || obstacle is Enemy;
+        }
+
+        private bool IsHittingDog(int laneIndex, float distanceFromCarEntrance, float length)
+        {
+            Dog dog = currentTrainCar.lanes[laneIndex].GetDog(distanceFromCarEntrance, length);
+
+            return dog != null;
         }
 
         private void CheckPickableObject()
@@ -163,6 +170,11 @@ namespace PenguinOnTheRun.Gameplay
             else
             {
                 currentSpeed = 0;
+
+                if (IsHittingDog(currentLaneIndex, targetPosition, length))
+                {
+                    Dog.Instance.BoneHint();
+                }
             }
 
             animator.SetBool(isRunning, (currentSpeed > minimumRunningSpeed) || (currentSpeed < -minimumRunningSpeed));
